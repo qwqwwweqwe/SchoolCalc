@@ -6,6 +6,11 @@ win.title("My project")
 win.geometry("500x300")
 win.resizable()
 
+def get_info():
+    info1 = float(ent.get())
+    info2 = cmb.get()
+    nap.config(text=str(info1*2)+info2*2)
+
 
 nap = Label(win, text="Текст для напису", font=("Comic Sans MS", 20), bg="green", fg="white")
 nap.place(relx=0.1, rely=0.4)
@@ -13,7 +18,7 @@ nap.place(relx=0.1, rely=0.4)
 ent = Entry(win, font=("Comic Sans MS", 20), width=10)
 ent.place(relx=0.1, rely=0.2)
 
-btn = Button(win, text="Click", font=("Comic Sans MS", 20), width=7, height=3, background="red", foreground="red")
+btn = Button(win, text="Click", font=("Comic Sans MS", 20), width=7, height=3, background="red", foreground="red", command=get_info)
 btn.place(relx=0.1, rely=0.6)
 
 cmb = ttk.Combobox(win, values=["hi", "hi2"], font=("Comic Sans MS", 20), width=7)
