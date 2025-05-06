@@ -10,61 +10,49 @@ win.title("SchoolCalc")
 win.geometry("750x700")
 win.configure(bg="#F5F5F5")
 
-main_font = ("Verdana", 14)
-title_font = ("Verdana", 24, "bold")
-bold_font = ("Verdana", 14, "bold")
-bg_color = "#F5F5F5"
-text_color = "#333333"
-button_color = "#10B981"
-button_text = "#FFFFFF"
-label_bg = "#FFFFFF"
-label_text = "#6B7280"
-entry_bg = "#FFFFFF"
-entry_text = "#333333"
-accent_color = "#F59E0B"
 
 style = ttk.Style()
-style.configure("TCombobox", fieldbackground=entry_bg, foreground=entry_text, font=main_font)
-style.configure("Treeview", background="#E5E7EB", foreground=text_color, font=main_font, rowheight=30)
-style.configure("Treeview.Heading", background="#D1D5DB", foreground=text_color, font=bold_font)
+style.configure("TCombobox", fieldbackground="#FFFFFF", foreground="#333333", font=("Verdana", 14))
+style.configure("Treeview", background="#E5E7EB", foreground="#333333", font=("Verdana", 14), rowheight=30)
+style.configure("Treeview.Heading", background="#D1D5DB", foreground="#333333", font=("Verdana", 14, "bold"))
 
 subjects = ["Інформатика", "Історія України", "Алгебра", "Англійська мова", "Біологія","Всесвітня історія", "Географія", "Геометрія", "Математика", "Мистецтво","Технології", "Українська література", "Українська мова", "Фізика","Фізична культура", "Хімія"]
 grade_types = ["Звичайна", "Контрольна", "Лабораторна", "Зошит", "Самостійна","Тематичне оцінювання", "Перевірка ДЗ", "Проєкт", "Усний залік","Письмовий залік", "Модульна робота", "Підсумкова оцінка"]
 
-title_label = Label(win, text="Журнал Оцінок", font=title_font, bg=label_bg, fg=accent_color)
+title_label = Label(win, text="Журнал Оцінок", font=("Verdana", 24, "bold"), bg="#FFFFFF", fg="#F59E0B")
 title_label.place(relx=0.1, rely=0.05)
 
-subject_label = Label(win, text="Предмет:", font=bold_font, bg=label_bg, fg=label_text)
+subject_label = Label(win, text="Предмет:", font=("Verdana", 14, "bold"), bg="#FFFFFF", fg="#6B7280")
 subject_label.place(relx=0.1, rely=0.15)
 
 subject_combo = ttk.Combobox(win, values=subjects, state="readonly", width=25)
 subject_combo.place(relx=0.25, rely=0.15)
 
-grade_type_label = Label(win, text="Тип оцінки:", font=bold_font, bg=label_bg, fg=label_text)
+grade_type_label = Label(win, text="Тип оцінки:", font=("Verdana", 14, "bold"), bg="#FFFFFF", fg="#6B7280")
 grade_type_label.place(relx=0.1, rely=0.20)
 
 grade_type_combo = ttk.Combobox(win, values=grade_types, state="readonly", width=25)
 grade_type_combo.place(relx=0.25, rely=0.20)
 
-grade_label = Label(win, text="Оцінка:", font=bold_font, bg=label_bg, fg=label_text)
+grade_label = Label(win, text="Оцінка:", font=("Verdana", 14, "bold"), bg="#FFFFFF", fg="#6B7280")
 grade_label.place(relx=0.1, rely=0.25)
 
-grade_entry = Entry(win, font=main_font, width=25, bg=entry_bg, fg=entry_text, bd=2, relief="flat")
+grade_entry = Entry(win, font=("Verdana", 14), width=25, bg="#FFFFFF", fg="#333333", bd=2, relief="flat")
 grade_entry.place(relx=0.25, rely=0.25)
 
-add_grade_button = Button(win, text="Додати оцінку", font=main_font, bg=button_color, fg=button_text, bd=0, relief="flat", padx=10, pady=5)
+add_grade_button = Button(win, text="Додати оцінку", font=("Verdana", 14), bg="#10B981", fg="#FFFFFF", bd=0, relief="flat", padx=10, pady=5)
 add_grade_button.place(relx=0.25, rely=0.35)
 
-new_subject_label = Label(win, text="Новий предмет:", font=bold_font, bg=label_bg, fg=label_text)
+new_subject_label = Label(win, text="Новий предмет:", font=("Verdana", 14, "bold"), bg="#FFFFFF", fg="#6B7280")
 new_subject_label.place(relx=0.1, rely=0.45)
 
-new_subject_entry = Entry(win, font=main_font, width=25, bg=entry_bg, fg=entry_text, bd=2, relief="flat")
+new_subject_entry = Entry(win, font=("Verdana", 14), width=25, bg="#FFFFFF", fg="#333333", bd=2, relief="flat")
 new_subject_entry.place(relx=0.25, rely=0.45)
 
-add_subject_button = Button(win, text="Додати предмет", font=main_font, bg=button_color, fg=button_text, bd=0, relief="flat", padx=10, pady=5)
+add_subject_button = Button(win, text="Додати предмет", font=("Verdana", 14), bg="#10B981", fg="#FFFFFF", bd=0, relief="flat", padx=10, pady=5)
 add_subject_button.place(relx=0.25, rely=0.55)
 
-tree_label = Label(win, text="Ваші оцінки", font=bold_font, bg=label_bg, fg=label_text)
+tree_label = Label(win, text="Ваші оцінки", font=("Verdana", 14, "bold"), bg="#FFFFFF", fg="#6B7280")
 tree_label.place(relx=0.1, rely=0.65)
 
 tree = ttk.Treeview(win, columns=("Subject", "GradeType", "Grade", "Average"), show="headings", height=8)
@@ -79,20 +67,20 @@ tree.column("Average", width=80, anchor="center")
 tree.place(relx=0.1, rely=0.65, relwidth=0.8, relheight=0.3)
 tree.tag_configure("oddrow", background="#F3F4F6")
 tree.tag_configure("evenrow", background="#E5E7EB")
-tree.tag_configure("subject_row", background="#FBBF24", foreground="#FFFFFF", font=bold_font)
+tree.tag_configure("subject_row", background="#FBBF24", foreground="#FFFFFF", font=("Verdana", 14, "bold"))
 
 scrollbar = ttk.Scrollbar(win, orient="vertical", command=tree.yview)
 tree.configure(yscrollcommand=scrollbar.set)
 scrollbar.place(relx=0.9, rely=0.65, relheight=0.3)
 
 
-edit_button = Button(win, text="Редагувати оцінку", font=main_font, bg=button_color, fg=button_text, bd=0, relief="flat", padx=10, pady=5)
+edit_button = Button(win, text="Редагувати оцінку", font=("Verdana", 14), bg="#10B981", fg="#FFFFFF", bd=0, relief="flat", padx=10, pady=5)
 edit_button.place(relx=0.5, rely=0.20)
 
-delete_button = Button(win, text="Видалити оцінку", font=main_font, bg=button_color, fg=button_text, bd=0, relief="flat", padx=10, pady=5)
+delete_button = Button(win, text="Видалити оцінку", font=("Verdana", 14), bg="#10B981", fg="#FFFFFF", bd=0, relief="flat", padx=10, pady=5)
 delete_button.place(relx=0.65, rely=0.20)
 
-average_label = Label(win, text="Загальний середній бал: 0", font=title_font, bg=label_bg, fg=accent_color)
+average_label = Label(win, text="Загальний середній бал: 0", font=("Verdana", 24, "bold"), bg="#FFFFFF", fg="#F59E0B")
 average_label.place(relx=0.5, rely=0.05)
 
 
